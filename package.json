@@ -22,7 +22,9 @@
     "@cds/core": "^6.4.4",
     "@clr/angular": "^15.6.0",
     "@clr/ui": "^15.6.0",
+    "clr-extension": "^0.4.0",
     "lodash-es": "^4.17.21",
+    "ngx-extension": "^0.4.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
