@@ -1,0 +1,7 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
+  // "eslint.workingDirectories": ["src"] // fix vscode eslint cannot find eslint.json
+}

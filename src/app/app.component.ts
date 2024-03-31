@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ClarityIcons, vmBugIcon } from '@cds/core/icon';
 import { ClarityModule } from '@clr/angular';

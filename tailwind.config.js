@@ -2,7 +2,7 @@
 // since clarity base is 20px, not 16px...
 const baseFontSize = 20;
 
-const convert = (value) => {
+const convert = value => {
   return (16 * value) / baseFontSize + 'rem';
 };
 
@@ -13,7 +13,7 @@ module.exports = {
     extend: {
       spacing: () => ({
         ...Array.from({ length: 96 }, (_, index) => index * 0.5)
-          .filter((i) => i)
+          .filter(i => i)
           .reduce((acc, i) => ({ ...acc, [i]: `${i / (baseFontSize / 4)}rem` }), {}),
       }),
       fontSize: {
@@ -115,10 +115,10 @@ module.exports = {
         '2xl': `${convert(1)}` /* 16px */,
         '3xl': `${convert(1.5)}` /* 24px */,
       },
-      minWidth: (theme) => ({
+      minWidth: theme => ({
         ...theme('spacing'),
       }),
-      maxWidth: (theme) => ({
+      maxWidth: theme => ({
         ...theme('spacing'),
         0: '0rem',
         xs: `${convert(20)}` /* 320px */,
