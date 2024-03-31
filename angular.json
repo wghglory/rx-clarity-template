@@ -8,6 +8,7 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
+          "changeDetection": "OnPush",
           "standalone": true
         },
         "@schematics/angular:directive": {
@@ -99,6 +100,6 @@
     }
   },
   "cli": {
-    "schematicCollections": ["@angular-eslint/schematics"]
+    "schematicCollections": ["@angular-eslint/schematics", "@schematics/angular"]
   }
 }
