@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin');
+
 // https://github.com/tailwindlabs/tailwindcss/discussions/1611#discussioncomment-3016300
 // since clarity base is 20px, not 16px...
 const baseFontSize = 20;
@@ -10,6 +12,14 @@ const convert = value => {
 module.exports = {
   content: ['./src/**/*.{html,ts}'],
   theme: {
+    screens: {
+      xs: '400px', // Custom breakpoint
+      sm: '576px',
+      md: '768px',
+      lg: '992px',
+      xl: '1200px',
+      '2xl': '1536px',
+    },
     extend: {
       spacing: () => ({
         ...Array.from({ length: 96 }, (_, index) => index * 0.5)
@@ -135,5 +145,29 @@ module.exports = {
       }),
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/container-queries'),
+    // https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer
+    plugin(function ({ addBase, addComponents, addUtilities, theme }) {
+      addComponents({
+        // grid grid-cols-[1fr_3fr] @2xl:grid-cols-[repeat(2,minmax(min-content,130px)_3fr)] @4xl:grid-cols-[repeat(3,minmax(min-content,130px)_3fr)] gap-3 items-center
+        '.keyvalue-grid': {
+          display: 'grid',
+          'grid-template-columns': '1fr 3fr',
+          gap: '0.75rem',
+          'align-items': 'center',
+        },
+        '@container (min-width: 900px)': {
+          '.keyvalue-grid': {
+            'grid-template-columns': 'repeat(2, minmax(min-content, 130px) 3fr)',
+          },
+        },
+        '@container (min-width: 1100px)': {
+          '.keyvalue-grid': {
+            'grid-template-columns': 'repeat(3, minmax(min-content, 130px) 3fr)',
+          },
+        },
+      });
+    }),
+  ],
 };
