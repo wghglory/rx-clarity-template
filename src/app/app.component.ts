@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+/* eslint-disable @angular-eslint/prefer-on-push-component-change-detection */
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { ClarityIcons, vmBugIcon } from '@cds/core/icon';
@@ -9,7 +9,7 @@ ClarityIcons.addIcons(vmBugIcon);
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, ClarityModule],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, ClarityModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })

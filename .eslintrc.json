@@ -46,7 +46,9 @@
             "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-on-push-component-change-detection": "warn",
+        "@angular-eslint/prefer-standalone-component": "error"
       }
     },
     {

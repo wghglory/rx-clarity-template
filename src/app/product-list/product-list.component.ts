@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
-
-import { StandaloneModule } from '../shared/standalone.module';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-product-list',
   standalone: true,
-  imports: [StandaloneModule],
+  imports: [],
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
 })
