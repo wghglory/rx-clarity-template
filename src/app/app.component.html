@@ -1,15 +1,31 @@
-<clr-main-container class="main-container">
-  <header class="header-6">
+<clr-main-container>
+  <clr-header class="header-6" [clr-nav-level]="1">
     <div class="branding">
       <a class="nav-link" routerLink="/">
-        <cds-icon shape="vm-bug"></cds-icon>
-        <span class="title">Playground</span>
+        <cds-icon shape="cog"></cds-icon>
+        <span class="title">Starter</span>
       </a>
     </div>
     <div class="header-nav">
       <a class="nav-link" routerLink="/products" routerLinkActive="active"><span class="nav-text">Products</span></a>
     </div>
-  </header>
+    <div class="header-actions">
+      <span class="inline-flex flex-col justify-center items-center px-3">
+        <span class="text-lg">{{ 'Username' }}</span>
+        <span class="text-xs">{{ 'Role' }}</span>
+      </span>
+      <cll-theme-toggle />
+      <clr-dropdown>
+        <button class="nav-icon" clrDropdownTrigger [attr.aria-label]="'TOGGLE_SETTINGS'">
+          <cds-icon shape="cog"></cds-icon>
+          <cds-icon shape="angle" direction="down"></cds-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <a href="javascript:void(0)" clrDropdownItem>Log Out</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </clr-header>
 
   <div class="content-container">
     <main class="content-area">
