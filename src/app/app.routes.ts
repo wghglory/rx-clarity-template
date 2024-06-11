@@ -1,15 +1,27 @@
 import { Routes } from '@angular/router';
 
-import { ProductListComponent } from './product-list/product-list.component';
+import { UserDetailComponent } from './user/pages/user-detail/user-detail.component';
+import { UserListComponent } from './user/pages/user-list/user-list.component';
+import { UserListAdvancedComponent } from './user/pages/user-list-advanced/user-list-advanced.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'products',
+    redirectTo: 'users-advanced',
     pathMatch: 'full',
   },
   {
-    path: 'products',
-    component: ProductListComponent,
+    path: 'users',
+    component: UserListComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'users-advanced',
+    component: UserListAdvancedComponent,
+  },
+  {
+    path: 'users/:id',
+    component: UserDetailComponent,
+    pathMatch: 'full',
   },
 ];

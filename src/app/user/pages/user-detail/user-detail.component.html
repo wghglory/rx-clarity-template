@@ -1,0 +1,11 @@
+@if (userState().loading) {
+  <cll-spinner />
+}
+
+@if (userState().error; as err) {
+  <cll-alert [error]="err" />
+}
+
+@if (userState().data; as user) {
+  <pre>{{ user | json }}</pre>
+}

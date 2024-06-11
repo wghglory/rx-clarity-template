@@ -1,0 +1,36 @@
+<section class="space-y-4">
+  <h2>Users</h2>
+
+  <div>
+    <button class="btn btn-outline" (click)="refresh()" [disabled]="usersState()?.loading">Refresh</button>
+  </div>
+
+  <clr-datagrid class="min-h-[200px]" (clrDgRefresh)="onDgRefresh($event)" [clrDgLoading]="usersState()?.loading === true">
+    <clr-dg-column>Fake Id</clr-dg-column>
+    <clr-dg-column [clrDgField]="'firstName'">First Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'lastName'">Last Name</clr-dg-column>
+    <clr-dg-column [clrDgField]="'email'">Email</clr-dg-column>
+
+    <clr-dg-placeholder>No data found</clr-dg-placeholder>
+
+    @for (user of usersState()?.data?.results; track user.id) {
+      <clr-dg-row [clrDgItem]="user">
+        <clr-dg-cell>
+          <a [routerLink]="['/users', $index + 1]">{{ $index + 1 }}</a>
+        </clr-dg-cell>
+        <clr-dg-cell>{{ user.name.first }}</clr-dg-cell>
+        <clr-dg-cell>{{ user.name.last }}</clr-dg-cell>
+        <clr-dg-cell>{{ user.email }}</clr-dg-cell>
+      </clr-dg-row>
+    }
+
+    <clr-dg-footer>
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of {{ total() }} items
+      <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="total()" />
+    </clr-dg-footer>
+  </clr-datagrid>
+
+  @if (usersState()?.error; as error) {
+    <cll-alert [error]="error" class="mb-4" />
+  }
+</section>
