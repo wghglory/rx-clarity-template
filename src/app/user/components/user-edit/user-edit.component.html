@@ -1,0 +1,28 @@
+<clr-modal [(clrModalOpen)]="open">
+  <h3 class="modal-title">Edit {{ user().name.first }}</h3>
+  <div class="modal-body">
+    <form clrForm [formGroup]="form" clrLabelSize="4">
+      <clr-input-container>
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" clrInput [formControl]="form.controls.firstName" />
+        <clr-control-error>Required</clr-control-error>
+      </clr-input-container>
+
+      @if (userState()?.error; as err) {
+        <cll-alert [error]="err" />
+      }
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="cancel()" [disabled]="userState()?.loading === true">Cancel</button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="confirm()"
+      [disabled]="form.invalid"
+      [clrLoading]="userState()?.loading === true"
+    >
+      Confirm
+    </button>
+  </div>
+</clr-modal>

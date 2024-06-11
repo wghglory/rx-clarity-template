@@ -15,6 +15,9 @@
 
     @for (user of usersState()?.data?.results; track user.id) {
       <clr-dg-row [clrDgItem]="user">
+        <clr-dg-action-overflow>
+          <button class="action-item" (click)="onEdit(user)">Edit</button>
+        </clr-dg-action-overflow>
         <clr-dg-cell>
           <a [routerLink]="['/users', $index + 1]">{{ $index + 1 }}</a>
         </clr-dg-cell>
@@ -34,3 +37,7 @@
     <cll-alert [error]="error" class="mb-4" />
   }
 </section>
+
+@if (selectedUser(); as user) {
+  <app-user-edit [user]="user" [(open)]="openEditDialog" />
+}
