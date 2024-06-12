@@ -5,6 +5,10 @@
     <button class="btn btn-outline" (click)="refresh()" [disabled]="usersState()?.loading">Refresh</button>
   </div>
 
+  @if (usersState()?.error; as error) {
+    <cll-alert [error]="error" class="my-4" />
+  }
+
   <clr-datagrid class="min-h-[200px]" (clrDgRefresh)="onDgRefresh($event)" [clrDgLoading]="usersState()?.loading === true">
     <clr-dg-column>Fake Id</clr-dg-column>
     <clr-dg-column [clrDgField]="'firstName'">First Name</clr-dg-column>
@@ -32,10 +36,6 @@
       <clr-dg-pagination #pagination [clrDgPageSize]="10" [clrDgTotalItems]="total()" />
     </clr-dg-footer>
   </clr-datagrid>
-
-  @if (usersState()?.error; as error) {
-    <cll-alert [error]="error" class="mb-4" />
-  }
 </section>
 
 @if (selectedUser(); as user) {
