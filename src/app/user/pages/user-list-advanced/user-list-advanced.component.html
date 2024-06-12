@@ -38,6 +38,6 @@
   </clr-datagrid>
 </section>
 
-@if (selectedUser(); as user) {
+@if (openEditDialog() && selectedUser(); as user) {
   <app-user-edit [user]="user" [(open)]="openEditDialog" />
 }
